@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    {% load static%}
+    <title> Edición de Registro </title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css"
+        integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
+    <link rel="stylesheet" href="{% static 'css/letra.css'%}">
+</head>
+<body>
+    <nav class="navbar" style="background-color:#065786;">
+    <div class="container-fluid">
+        <a class="navbar-brand" href="#">HOSPITAL</a>
+    <div class="container">
+      <a class="navbar-brand" href="#">
+        <img src="https://img.freepik.com/vector-gratis/fondo-hexagonal-dia-mundial-salud-simbolo-caduceus_1035-2045.jpg?w=360" width="60" >
+      </a>
+    </div>
+  </nav>
+  <style>
+    body{background:url(https://fondosmil.com/fondo/6725.jpg)no-repeat;background-size:cover;}</body>
+  </style>
+  <hr> 
+    <div class="col-md-4 offset-md-4">
+        <h3 align="center">Edicion de Registro de los Médicos </h3>
+        <div class="" style="border-color:#1a1a1b;">
+            <div class="card-body">
+                <form action="/editarinfo/" method="POST">{% csrf_token %}
+                    <div class="form-group">
+                        <input type="text" id="txtCodigo" name="txtCodigo" value="{{Informacion.codigo}}"  class="form-control" placeholder="Codigo"
+                            minlength="6" maxlength="6" readonly required>
+                    </div>
+                    <div class="form-group">
+                        <input type="text" id="txtNombre" name="txtNombre" value="{{Informacion.nombre}}" class="form-control" placeholder="Nombre"
+                            maxlength="50" readonly required>
+                    </div>
+                    <div class="form-group">
+                        <input type="text" id="txtApellido" name="txtApellido" value="{{Informacion.Apellido}}"  class="form-control" placeholder="Apellido"
+                            maxlength="50" readonly required>
+                    </div>
+                    <div class="form-group">
+                        <input type="text" id="txtEspecialidad" name="txtEspecialidad" value="{{Informacion.Especialidad}}" class="form-control" placeholder="Especialidad"
+                            maxlength="50" readonly required>
+                    </div>
+                    <div class="form-group">
+                        <input type="text" id="txtJornada" name="txtJornada" value="{{Informacion.Jornada}}" class="form-control" placeholder="Jornada"
+                            maxlength="50" required>
+                    </div>
+                    <div class="form-group">
+                        <input type="text" id="txtTelefono" name="txtTelefono" value="{{Informacion.Telefono}}"  class="form-control" placeholder="Telefono"
+                            maxlength="200" required>
+                    </div>
+                    <div class="form-group">
+                        <button type="submit" class="btn btn-success btn-block text-white">Guardar</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</html>

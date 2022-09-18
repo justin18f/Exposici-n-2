@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    {% load static %}
+    <title> Registro de los medicos</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css"
+        integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
+        <link rel="stylesheet" href="{% static 'css/gestionDatos.css'%}">
+        <link rel="stylesheet" href="{% static 'css/letra.css'%}">
+</head>
+<body>
+    <nav class="navbar" style="background-color:#065786;">
+    <div class="container-fluid">
+        <a class="navbar-brand" href="#">HOSPITAL</a>
+    <div class="container">
+      <a class="navbar-brand" href="#">
+        <img src="https://img.freepik.com/vector-gratis/fondo-hexagonal-dia-mundial-salud-simbolo-caduceus_1035-2045.jpg?w=360" width="60" >
+      </a>
+    </div>
+  </nav>
+  <style>
+    body{background:url(https://img.freepik.com/foto-gratis/doctor-estetoscopio-manos-fondo-hospital_1423-1.jpg?w=2000)no-repeat;background-size:cover;}</body>
+  </style>
+</body>
+<hr>
+<tr>
+    <td align="center"><a href="/Gestion.html/" class="btn btn-info">Volver</a></td>
+</tr>
+<div class="container py-4" align="center">
+<div class="row" align="center">
+    <div class="col-sm-12 col-md-6 col-lg-3 col-xl-3" align="center">
+        <h3>Datos de los médicos</h3>
+        <div class="" style="border-color:#1a1a1b;">
+            <div class="card-body">
+                <form action="/registrarinfo/" method="POST">{% csrf_token %}
+                    <div class="form-group">
+                        <input type="text" id="txtCodigo" name="txtCodigo" class="form-control" placeholder="Codigo"
+                            minlength="6" maxlength="6" required>
+                    </div>
+                    <div class="form-group">
+                        <input type="text" id="txtNombre" name="txtNombre" class="form-control" placeholder="Nombres"
+                            maxlength="50" required>
+                    </div>
+                    <div class="form-group">
+                        <input type="text" id="txtApellido" name="txtApellido" class="form-control" placeholder="Apellidos"
+                            maxlength="50" required>
+                    </div>
+                    <div class="form-group">
+                        <input type="text" id="txtEspecialidad" name="txtEspecialidad" class="form-control" placeholder="Especialidad"
+                            maxlength="50" required>
+                    </div>
+                    <div class="form-group">
+                        <input type="text" id="txtJornada" name="txtJornada" class="form-control" placeholder="Jornada"
+                            maxlength="50" required>
+                    </div>
+                    <div class="form-group">
+                        <input type="text" id="txtTelefono" name="txtTelefono" class="form-control" placeholder="Telefono"
+                            maxlength="200" required>
+                    </div>
+                    <div class="form-group">
+                        <button type="submit" class="btn btn-success btn-block text-white">Guardar</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <div class="col-sm-12 col-md-6 col-lg-9 col-xl-9">
+        <h1>Lista de los medicos</h1>
+        <div class="" style="border-color:#1a1a1b;">
+        <div class="table-responsive py-2">
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th>#</th>
+                        <th>Código</th>
+                        <th>Nombres</th>
+                        <th>Apellidos</th>
+                        <th>Especialidad</th>
+                        <th>Jornada</th>
+                        <th>Telefono</th>
+                        <th colspan="2">Opciones</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for c in Informacion %}
+                    <tr>
+                        <td>{{forloop.counter}}</td>
+                        <td>{{c.codigo}}</td>
+                        <td>{{c.nombre}}</td>
+                        <td>{{c.Apellido}}</td>
+                        <td>{{c.Especialidad}}</td>
+                        <td>{{c.Jornada}}</td>
+                        <td>{{c.Telefono}}</td>
+                        <td><a href="edicioninfo/{{c.codigo}}" class="btn btn-info">Editar</a></td>
+                        <td><a href="eliminarinfo/{{c.codigo}}" class="btn btn-danger">Eliminar</a></td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+</html>

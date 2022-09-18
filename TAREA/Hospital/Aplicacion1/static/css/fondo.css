@@ -1,0 +1,7 @@
+.bg_animate{
+    width: 100%;
+    height: 100vh;
+    background: linear-gradient(to right, #adb4bd,#e8ebee);
+    position: relative;
+    overflow: hidden;
+}
